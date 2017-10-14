@@ -1,0 +1,29 @@
+import java.util.*;
+
+public class Problem2
+{
+  public static void main(String[] ags)
+  {
+    int sum = 1;
+    int add = 1;
+    int flag = 0;
+    int i;
+    
+    for(i = 0; i < 36; i++)
+    {
+     if(flag == 0)
+     {
+       sum = sum - (sum + i);
+       flag = 1;
+     }  
+     if(flag == 1)
+     {
+       sum = sum + (sum + i);
+       flag = 0;
+     }
+    }
+    System.out.printf("Sum = %d\n", sum);
+  }
+}
+  
+    

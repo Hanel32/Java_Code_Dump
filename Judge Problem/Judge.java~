@@ -1,0 +1,34 @@
+import java.util.*;
+import java.io.*;
+
+public class Judge
+{
+  public static void main(String[] args) throws FileNotFoundException
+  {
+    Scanner inputStream = null;
+    inputStream  = new Scanner(new FileReader("data.txt")); 
+    
+    double[] scores = {0., 0., 0., 0., 0., 0., 0., 0., 0., 0.};
+    double temp, average, tot = 0;
+    int i;
+    
+    do{
+      for(i = 0; i <= 10; i++)
+      {
+        scores[i] = inputStream.nextDouble();
+        if(scores[i] < scores[i-1] && i > 0)
+        {
+          temp        = scores[i-1];
+          scores[i-1] = scores[i];
+          scores[i]   = temp;
+        }
+      }
+      for(i = 2; i < 10; i ++)
+        tot += scores[i];
+      average = tot / 8.;
+      System.out.println("For competitor #1, the average score is " + average);   
+    }while(inputStream.hasNext());
+  }
+}
+    
+    

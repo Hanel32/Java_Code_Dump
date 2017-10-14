@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class Test2
+{
+  public static void main(String[] args)
+  {
+    int sumDig  = 0;
+    int sumChar = 0;
+    int check;
+    int[] dig  = {123, 456, 789};
+    int[] char = {"123", "456", "789"};
+    
+    sumDig = digSum(dig);
+    System.out.printf("The sum of the digits is: ", sumDig);
+    
+    
+}
+
+  digSum(int[] dig)
+  {
+    int i;
+    int sum = 0;
+    
+    for(i = 0; i < dig.length ; i++)
+    {
+      sum = sum + dig[i];
+    }
+    return sum;
+  }
+}   

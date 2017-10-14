@@ -1,0 +1,56 @@
+public class AllFunctions
+{
+  public double mySin(double x)
+  {
+    double sign = 1.;
+    double sum = 0.;
+    int    i, y;
+    
+    for(i = 0; i <= 21 ; i++)
+    {
+      y = (2 * i) + 1;
+      sum = sum + (sign * doWork(x, y));
+      sign = -sign;
+    }
+    return(sum);
+  }
+  public double myCos(double x)
+  {
+    double sign = 1;
+    double sum = 1.;
+    int    i, y;
+    
+    for(i = 1; i <= 21 ; i++)
+    {
+      y = 2 * i;
+      sum = sum - (sign * doWork(x, y));
+      sign = -sign;
+    }
+    return(sum);
+  }
+  public double myExp(double x)
+  {
+    double sign = 1.;
+    double sum = 1.;
+    int    i, y;
+    
+    for(i = 1; i <= 21 ; i++)
+    {
+      y = i;
+      sum = sum + doWork(x, y);
+    }
+    return(sum);
+  }
+  public double doWork(double x, double y)
+  {
+    double temp, bot, top, mult;
+    for(top = 1., bot = 1., temp = 1. ; y > 0 ; y--)             
+    {
+      top = x;
+      bot = y;
+      mult = top/bot;
+      temp = temp * mult;
+    }
+    return temp;
+  }
+}

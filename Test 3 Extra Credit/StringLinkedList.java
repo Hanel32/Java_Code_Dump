@@ -1,0 +1,118 @@
+public class StringLinkedList
+{
+  private ListNode head;
+  
+  public StringLinkedList()
+  {
+    head = null;
+  }
+  
+  public int length()           //Returns the number of nodes in the list.
+  {
+    int count = 0;
+    ListNode position = head;
+    
+    while(position != null)
+    {
+      count++;
+      position = position.getLink();
+    }
+    return count;
+  }
+  
+  public void addANodeToStart (String addData) //Adds a node at the start of the list. The added node has addData
+  {                                            //as its data. The added node will be the first node in the list.
+    head = new ListNode(addData, head);
+  }
+  
+  public void deleteHeadNode()  //Not good enough, read later. Method deleteANode();
+  {
+    if(head != null)
+      head = head.getLink();
+    else
+    {
+      System.out.println("Deleteing from an empty list.");
+      System.exit(0);
+    }
+  }
+  
+  public boolean onList(String target)   //Return true or false.
+  {
+    return(Find(target) != null);
+  }
+  
+  private ListNode Find(String target)  //Finds the first node containing the target data, and returns a reference
+  {                                     //To that node. If target is not in the list, null is returned.
+    ListNode position;
+    String dataAtPosition;
+      
+    position = head;
+    while(position != null)
+    {
+      dataAtPosition = position.getData();
+      if(dataAtPosition.equals(target))
+        return position;
+      position = position.getLink();
+    }
+    return null;
+  }
+  
+  public void showList()  //FILO/LIFO
+  {
+    ListNode position;
+    
+    if(head != null)
+    {
+      position = head;
+      while(position != null)
+      {
+        System.out.printf(position.getData() + " ");
+        position = position.getLink();
+      }
+    }
+    else
+      System.out.printf("No elements in the list...");
+  }
+  
+  public void showReverseList()         //FIFO
+  {
+    ListNode p, post = null;
+    
+    if(head != null)
+    {
+      do{
+        p = head;
+        while (p.getLink() != post)
+          p = p.getLink();
+        post = p;
+        System.out.print(p.getData() + " ");
+      }while (post != head);
+    }
+    else
+      System.out.printf("No elements in the list...");
+  }
+  
+  public void deleteANode(String target)
+  {
+    ListNode position = head, last = head;
+    ListNode findIt = Find(target);
+    
+    if(findIt == head)
+      head = head.getLink();
+    else
+    {
+      if(findIt != null)
+      {
+        while(position != findIt)
+        {
+          last = position;
+          position = position.getLink();
+        }
+        last.setLink(position.getLink());
+      }
+      else
+        System.out.printf("No such target - " + target);
+    }
+  }
+}
+        
